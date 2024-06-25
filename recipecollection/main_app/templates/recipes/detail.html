@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/recipes/recipe-detail.css' %}" />
+{% endblock %}
+
+{% block content %}
+<section class="recipe-container">
+    <div class="recipe-img">
+    </div>
+    <div class="recipe-details">
+        <h1>{{ recipe.name }}</h1>
+        <p>{{ recipe.cuisine }}</p>
+        <h2>Ingredients:</h2>
+        <h3>{{ recipe.ingredients|linebreaksbr }}</h3>
+        <h2>Instructions:</h2>
+        <h3>{{ recipe.instructions|linebreaksbr }}</h3>
+
+
+        <div class="recipe-actions">
+            <a href="{% url 'recipe-update' recipe.id %}" class="btn warn">Edit</a>
+            <a href="{% url 'recipe-delete' recipe.id %}" class="btn danger">Delete</a>
+        </div>
+    </div>
+</section>
+
+{% comment %} <section class="dlcs">
+    <div class="subsection-title">
+        <h2>DLCS</h2>
+    </div>
+    <h3>{{ game.name }}'s DLCS</h3>
+    <div class="subsection-content">
+        {% if game.dlcs.count %}
+        {% for dlc in game.dlcs.all %}
+        <div class="dlc-container">
+            <a href="{% url 'dlc-detail' dlc.id %}">
+                <p>{{ dlc.name }}</p>
+            </a>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p class="no-dlcs">{{ game.name }} doesn't have any DLCS!</p>
+        {% endif %}
+    </div>
+</section> {% endcomment %}
+{% endblock %}
