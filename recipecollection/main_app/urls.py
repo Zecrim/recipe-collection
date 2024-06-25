@@ -15,5 +15,6 @@ urlpatterns = [
     # path('dlcs/<int:pk>/update/', views.DlcUpdate.as_view(), name='dlc-update'),
     # path('dlcs/<int:pk>/delete/', views.DlcDelete.as_view(), name='dlc-delete'),
     # path('games/<int:game_id>/associate-dlc/<int:dlc_id>/', views.associate_dlc, name='associate-dlc'),
+    path('recipe-search/', views.recipe_search, name='recipe-search'),
     path('accounts/signup/', views.signup, name='signup')
 ]
