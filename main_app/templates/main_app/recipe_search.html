@@ -18,16 +18,15 @@
         {% for recipe_data in recipes %}
             <li>
                 {{ recipe_data.title }}
-                <form method="post" class="form-container">
+                <form method="post" style="display:inline;">
                     {% csrf_token %}
-                    <input type="hidden">
-                    <button type="submit" name="add-button" class="btn submit">Add</button>
+                    <input type="hidden" name="recipe_id" value="{{ recipe_data.id }}">
+                    <button type="submit" name="add-button" class="btn">Add</button>
                 </form>
-            </li> 
-                <!-- Optionally display other details like cuisine, image, etc. -->
+            </li>
         {% endfor %}
     </ul>
-{% endif %}
+    {% endif %}
 </body>
 {% endblock %}
 

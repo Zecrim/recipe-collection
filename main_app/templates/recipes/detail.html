@@ -25,24 +25,4 @@
         </div>
     </div>
 </section>
-
-{% comment %} <section class="dlcs">
-    <div class="subsection-title">
-        <h2>DLCS</h2>
-    </div>
-    <h3>{{ game.name }}'s DLCS</h3>
-    <div class="subsection-content">
-        {% if game.dlcs.count %}
-        {% for dlc in game.dlcs.all %}
-        <div class="dlc-container">
-            <a href="{% url 'dlc-detail' dlc.id %}">
-                <p>{{ dlc.name }}</p>
-            </a>
-        </div>
-        {% endfor %}
-        {% else %}
-        <p class="no-dlcs">{{ game.name }} doesn't have any DLCS!</p>
-        {% endif %}
-    </div>
-</section> {% endcomment %}
 {% endblock %}

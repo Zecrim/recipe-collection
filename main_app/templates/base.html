@@ -25,18 +25,14 @@
             <ul>
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'recipe-index' %}">All Recipes</a></li>
-                {% comment %} <li><a href="{% url 'dlc-index' %}">All DLCS</a></li> {% endcomment %}
                 <div class="dropdown">
-                    <button class="dropbtn">Get Recipes</button>
+                    <button class="dropbtn">Add Recipes</button>
                     <div class="dropdown-content">
                       <a href="{% url 'recipe-create' %}">Create Recipe</a>
                       <a href="{% url 'recipe-search' %}">Search for a Recipe</a>
                     </div>
                   </div>
                 </div>
-                {% comment %} <li><a href="{% url 'recipe-create' %}">Add a Recipe</a></li>
-                <li><a href="{% url 'recipe-search' %}">Search for a recipe</a></li> {% endcomment %}
-                {% comment %} <li><a href="{% url 'dlc-create' %}">Add a DLC</a></li> {% endcomment %}
                 <li><a href="{% url 'about' %}">About</a></li>
                 <li>
                     <form id="logout-form" method="post" action="{% url 'logout' %}">

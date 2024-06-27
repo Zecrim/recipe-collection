@@ -10,7 +10,7 @@
 <section class="page-header">
     <h1>Recipe List</h1>
 </section>
-
+{% if recipes %}
 <section class="card-container">
     {% for recipe in recipes %}
     <div class="card">
@@ -26,4 +26,7 @@
     </div>
     {% endfor %}
 </section>
+{% else %}
+    <h2>Nothing here! Try adding a recipe.</h2>
+{% endif %}
 {% endblock %}
