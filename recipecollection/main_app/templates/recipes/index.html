@@ -17,7 +17,7 @@
         <a href="{% url 'recipe-detail' recipe.id %}">
             <div class="card-content">
                 <div class="card-img-container">
-                    <img src={{ recipe.image}} alt="A picture of {{recipe.name}}" />
+                    <img src={{ recipe.image}} alt="A picture of {{recipe.name}}" class="recipe-img"/>
                 </div>
                     <h1>{{ recipe.name }}</h1>
                     <p>{{ recipe.cuisine }}</p>

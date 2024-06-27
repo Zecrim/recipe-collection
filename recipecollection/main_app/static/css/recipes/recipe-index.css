@@ -40,9 +40,8 @@
 
 .card:hover {
     box-shadow: 5px 5px 6px -1px #25b8bb;
-    ;
 }
 
 img {
-    width: 10px;
+    width: 100%;
 }

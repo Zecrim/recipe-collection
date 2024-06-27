@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/form.css' %}" />
+{% endblock %}
+{% block content %}
+<body>
+    <h1>Search for a Recipe</h1>
+    <form method="post" class="form-container">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" name="search-button" class="btn submit">Search</button>
+    </form>
+    {% if recipes %}
+    <h2>Search Results:</h2>
+    <ul class='results'>
+        {% for recipe_data in recipes %}
+            <li>
+                {{ recipe_data.title }}
+                <form method="post" class="form-container">
+                    {% csrf_token %}
+                    <input type="hidden">
+                    <button type="submit" name="add-button" class="btn submit">Add</button>
+                </form>
+            </li> 
+                <!-- Optionally display other details like cuisine, image, etc. -->
+        {% endfor %}
+    </ul>
+{% endif %}
+</body>
+{% endblock %}
+

@@ -21,7 +21,7 @@ def get_api_data(query):
     params = {
         'apiKey': '6067e86c3d544cb199cd62ec110d3463',
         'query': query,
-        'number': 1,
+        'number': 10,
         'addRecipeInformation': True,
         'fillIngredients': True,
         'addRecipeInstructions': True,
@@ -35,36 +35,46 @@ def get_api_data(query):
 
     return data
 
-
+@login_required
 def recipe_search(request):
     form = RecipeSearchForm()
+    recipes = []
     if request.method == 'POST':
-        form = RecipeSearchForm(request.POST)
-        if form.is_valid():
-            query = form.cleaned_data['query']
-            results = get_api_data(query)
+        if 'search-button' in request.POST:
+            form = RecipeSearchForm(request.POST)
+            if form.is_valid():
+                query = form.cleaned_data['query']
+                results = get_api_data(query)
+                if 'error' not in results and results.get('results'):
+                    recipes = results['results']
+
+        elif 'add-button' in request.POST:
+            recipe_id = request.POST.get('id')
+            print (recipe_id)
+            results = get_api_data('')
             if 'error' not in results and results.get('results'):
-                recipe_data = results['results'][0]  # Get the first recipe
-                name = recipe_data.get('title', 'No Title')
-                cuisine = recipe_data.get('cuisines', [])
-                ingredients = '\n'.join([ingredient['original'] for ingredient in recipe_data.get('extendedIngredients', [])])
-                instructions = '\n'.join([step['step'] for instruction in recipe_data.get('analyzedInstructions', []) for step in instruction.get('steps', [])])
-                image = recipe_data.get('image', '')
-                user = request.user
+                for recipe_data in recipes:
+                    if str(recipe_data['id']) == recipe_id:
+                        # recipe_data = recipe_data
+                        name = recipe_data.get('title', 'No Title')
+                        cuisine = recipe_data.get('cuisines', '')[0]
+                        ingredients = '\n'.join([ingredient['original'] for ingredient in recipe_data.get('extendedIngredients', [])])
+                        instructions = '\n'.join([step['step'] for instruction in recipe_data.get('analyzedInstructions', []) for step in instruction.get('steps', [])])
+                        image = recipe_data.get('image', '')
+                        user = request.user
 
-                # Create and save the Recipe instance
-                Recipe.objects.create(
-                    name=name,
-                    cuisine=cuisine,
-                    ingredients=ingredients,
-                    instructions=instructions,
-                    image=image,
-                    user=user
-                )
+                        Recipe.objects.create(
+                            name=name,
+                            cuisine=cuisine,
+                            ingredients=ingredients,
+                            instructions=instructions,
+                            image=image,
+                            user=user
+                        )
 
-                return redirect('recipe-index')  # Redirect to a list of recipes or any other page
+                        return redirect('recipe-index')
 
-    return render(request, 'recipe_search.html', {'form': form})
+    return render(request, 'main_app/recipe_search.html', {'form': form, 'recipes': recipes})
 
 @login_required
 def recipe_index(request):
