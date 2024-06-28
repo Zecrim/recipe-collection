@@ -2,6 +2,12 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    margin-top: 5%;
+    font-size: 2rem;
+}
+
+.form-container input {
+    width: 100%;
 }
 
 table {
@@ -35,10 +41,20 @@ td>textarea {
 
 .btn {
     align-self: flex-start;
-    margin-left: 16%;
+    margin-left: 1%;
 }
 
-.results a {
-    color:aliceblue;
-    text-decoration: none;
+.results {
+    font-size: 2rem;
+    color:white;
+    background-color: rgb(195, 166, 127);
+    border-radius: 15px;
+    padding: 1%;
+}
+
+.result {
+    background-color: rgb(143, 120, 91);
+    border-radius: 15px;
+    margin: 1%;
+    padding: 1%;
 }

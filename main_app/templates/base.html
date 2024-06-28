@@ -16,11 +16,9 @@
 
 <body>
     <header>
-        <div class="header-logo-container">
             <a href="/">
-                {% comment %} <img src="{% static 'images/header-logo.svg' %}" alt="The Recipe Collection Logo" /> {% endcomment %}
+                <img src="{% static 'images/header-logo.png' %}" alt="The Recipe Collection Logo" />
             </a>
-        </div>
         <nav>
             <ul>
                 {% if user.is_authenticated %}
@@ -52,6 +50,7 @@
         {% block content %}
         {% endblock %}
     </main>
+    <div class='center-page'/>
 </body>
 
 </html>

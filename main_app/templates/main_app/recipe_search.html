@@ -6,7 +6,9 @@
 {% endblock %}
 {% block content %}
 <body>
-    <h1>Search for a Recipe</h1>
+    <section class="page-header">
+        <h1>Search for a Recipe</h1>
+    </section>
     <form method="post" class="form-container">
         {% csrf_token %}
         {{ form.as_p }}
@@ -16,12 +18,12 @@
     <h2>Search Results:</h2>
     <ul class='results'>
         {% for recipe_data in recipes %}
-            <li>
+            <li class='result'>
                 {{ recipe_data.title }}
-                <form method="post" style="display:inline;">
+                <form method="post" >
                     {% csrf_token %}
                     <input type="hidden" name="recipe_id" value="{{ recipe_data.id }}">
-                    <button type="submit" name="add-button" class="btn">Add</button>
+                    <button type="submit" name="add-button" class="btn submit">Add</button>
                 </form>
             </li>
         {% endfor %}

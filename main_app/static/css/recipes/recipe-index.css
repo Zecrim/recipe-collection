@@ -3,6 +3,8 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    margin-top: 10%;
+
 }
 
 .card {
@@ -24,8 +26,7 @@
 
 .card>a {
     text-decoration: none;
-    /* color: var(--text-color); */
-    color:aliceblue;
+    color: var(--text-color);
 }
 
 .card h2 {
@@ -39,7 +40,7 @@
 }
 
 .card:hover {
-    box-shadow: 5px 5px 6px -1px #25b8bb;
+    box-shadow: 5px 5px 6px -1px var(--bg-color);
 }
 
 img {
