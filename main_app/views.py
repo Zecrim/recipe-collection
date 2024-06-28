@@ -46,7 +46,6 @@ def recipe_search(request):
                 results = get_api_data(query)
                 if 'error' not in results and results.get('results'):
                     recipes = results['results']
-                    # Save the recipes to the session
                     request.session['recipes'] = recipes
         elif 'add-button' in request.POST:
             recipe_id = request.POST.get('recipe_id')
@@ -104,7 +103,7 @@ def signup(request):
 
 class RecipeCreate(LoginRequiredMixin, CreateView):
     model = Recipe
-    fields = ['name', 'cuisine', 'ingredients', 'instructions']
+    fields = ['name', 'cuisine', 'ingredients', 'instructions', 'image']
     success_url = '/recipes'
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -113,7 +112,7 @@ class RecipeCreate(LoginRequiredMixin, CreateView):
 
 class RecipeUpdate(LoginRequiredMixin,UpdateView):
     model = Recipe
-    fields = ['name', 'cuisine', 'ingredients', 'instructions']
+    fields = ['name', 'cuisine', 'ingredients', 'instructions', 'image']
 
 class RecipeDelete(LoginRequiredMixin,DeleteView):
     model = Recipe

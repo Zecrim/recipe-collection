@@ -7,7 +7,7 @@ class Recipe(models.Model):
     cuisine = models.CharField(max_length=100)
     ingredients = models.TextField()
     instructions = models.TextField()
-    image = models.CharField(max_length=100)
+    image = models.CharField(max_length=100, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
