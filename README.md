@@ -30,8 +30,8 @@ You can visit the website here! [start here.](https://chef-book-7e05b256961b.her
 )
 
 ### Resources Used
-![The Spoonacular food and recipe api.](https://spoonacular.com/food-api)
-![Google Fonts](https://fonts.google.com/)
+* [The Spoonacular food and recipe api.](https://spoonacular.com/food-api)
+* [Google Fonts](https://fonts.google.com/)
 
 
 ### Next Steps
