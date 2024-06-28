@@ -106,6 +106,9 @@ class RecipeCreate(LoginRequiredMixin, CreateView):
     model = Recipe
     fields = ['name', 'cuisine', 'ingredients', 'instructions']
     success_url = '/recipes'
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 
 class RecipeUpdate(LoginRequiredMixin,UpdateView):
