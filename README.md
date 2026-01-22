@@ -10,7 +10,7 @@ Chef Book is a versatile culinary app that allows users to add their own recipes
 Whether you're a seasoned chef or a home cook, Chef Book makes it easy to organize and discover delicious recipes tailored to your taste.
 
 ## Getting Started
-You can visit the website here! [start here.](https://chef-book-7e05b256961b.herokuapp.com/)
+You can visit the website here! [start here.](https://chef-book-cbe0b8629ea9.herokuapp.com/)
 
 ## Planning Materials
 ![The model diagram showing the apps model relationships.](https://i.imgur.com/cPKJTyM.png)
